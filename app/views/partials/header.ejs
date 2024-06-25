@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZombieLand</title>
+    <meta name="description" content="ZombieLand est bien plus qu'un simple parc d'attractions, c'est une expérience terrifiante, palpitante et mémorable qui plonge les visiteurs au cœur d'un univers post-apocalyptique où les zombies règnent en maîtres.">
+    <script src="https://kit.fontawesome.com/6484e6a0a2.js" crossorigin="anonymous"></script>
+    <script src="/js/global.js" defer></script>
+    <script src="/js/bisounours.js"></script>
+    <script src="/js/button-confirm.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/styles/index.css">
+    <link rel="shortcut icon" href="/img/Favicon.png" type="image/x-icon">
+</head>
+
+<body id="body" class="body-home">
+    <header class="margin-RL header">
+        <nav class="body-home-nav header-navbar navbar" aria-label="Navigation principale">
+            <div class="logo-sound">
+                <img src="/img/Logo-transparent.png" alt="Logo ZombieLand" class="logo-header">
+                <i class="fa-solid fa-volume-xmark" id="sound"></i>
+            </div>
+            
+            <ul class="flex-nav margin-left-1 display_desktop">
+                <li class="navbar__link first"><a href="/">Accueil</a></li>
+                <li class="navbar__link second"><a href="/attractions">Nos attractions</a></li>
+                <li class="navbar__link third"><a href="/reservations">Réserver</a></li>
+            </ul>
+    
+            <ul class="flex-nav margin-left-1 navbar__links" style="display: none;">
+                <li class="navbar__link first"><a href="/">Accueil</a></li>
+                <li class="navbar__link second"><a href="/attractions">Nos attractions</a></li>
+                <li class="navbar__link third"><a href="/reservations">Réserver</a></li>
+    
+            <% if (typeof isLogged =='undefined' || isLogged == false ) { %>
+                <li class="navbar__link"><a href="/connexion">Connexion</a></li>
+                <% } %>
+            <% if (typeof isLogged !=='undefined' ) { %>
+                <li class="navbar__link"><a href="/profil">Mon profil</a></li>
+                <% } %>
+            <% if (typeof isLogged !=='undefined' ) { %>
+                <li class="navbar__link"><a href="/panier">Mon panier</a></li>
+                <% } %>
+    
+                <% if (typeof isLogged !=='undefined' ) { %>
+                    <% if (isAdmin == true ) { %>
+                        <li class="navbar__link"><a href="/admin">Espace admin</a></li>
+                        <% } %>
+                    <% } %>
+                        
+            <% if (typeof isLogged !=='undefined' ) { %>
+                <li class="navbar__link"><a href="/deconnexion">Se déconnecter</a></li>
+                <% } %>
+            </ul>
+    
+            <button class="burger" aria-label="Menu mobile">
+                <span class="bar"></span>
+            </button>
+    
+            <% if (typeof isLogged !=='undefined' ) { %>
+                <div class="profil-navigation display_desktop">
+                    <% if (isAdmin == true ) { %>
+                        <a href="/admin" class="go-profil a-no-underline display_desktop" aria-label="Page admin"><i class="fa-regular fa-star"></i></a>
+                        <% } %>
+                    <a href="/profil" class="go-profil a-no-underline display_desktop" aria-label="Page profil"><i class="fa-regular fa-face-smile icon-nav-connect"></i></a>
+                
+                    <a href="/panier" class="go-profil a-no-underline display_desktop" aria-label="Voir mon panier"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="/deconnexion" class="go-deconnexion a-no-underline display_desktop" aria-label="Déconnexion"><i class="fa-solid fa-arrow-right-from-bracket icon-nav-connect"></i></a>
+                </div>
+                <% } else { %>
+                <div class="profil-navigation">
+                    <a href="/connexion" class="go-connexion a-no-underline display_desktop" aria-label="Connexion"><i class="fa-regular fa-user user-icon icon-nav"></i></a>
+                    <!-- <a href="/panier" class="go-profil a-no-underline display_desktop" aria-label="Voir mon panier"><i class="fa-solid fa-cart-shopping"></i></a> -->
+                </div>
+                    <% } %>
+        </nav>
+       
+            <audio id="audio" src="/son/ZombieSound.mp3"></audio>
+        
+    </header>
+     

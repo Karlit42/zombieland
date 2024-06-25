@@ -1,0 +1,146 @@
+@use '../mixin';
+
+.main-reservations {
+    margin-bottom: 5rem;
+}
+
+.container-reservations-user {
+    padding: 1rem;
+}
+
+.flex-start-user {
+    @include mixin.small {
+        align-items: flex-start !important;
+    }
+}
+
+.container-reservations {
+
+    margin-bottom: 5rem;
+    select, input {
+        border-radius: 10px;
+        padding: 5px;
+    }
+
+    .form-reservations {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+
+            @include mixin.medium {
+                font-size: 2.2rem ;
+            }
+
+            @include mixin.small {
+                font-size: 2rem ;
+            }
+        }
+
+        @include mixin.small {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+.card-reservations {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: rgba(255, 151, 151, 0.448) 0px 0px 20px, rgb(255, 255, 255) 0px 0px 3px;
+    display: flex;
+    flex-direction: column;
+
+        select, .radio-group{
+            margin-bottom: 2rem;
+        }
+}
+
+// Card dynamique de resultat
+.card-reservations-result {
+    .card {
+        max-width: 25rem;
+        min-height: 30rem;
+        display: flex;
+        flex-direction: column;
+        border-radius: 1.5rem;
+        background-color: rgb(0, 0, 0);
+        box-shadow: rgba(255, 151, 151, 0.448) 0px 0px 20px, rgb(255, 255, 255) 0px 0px 3px;
+        margin-top: 2.5rem;
+
+            img {
+                width: 100%;
+                min-width: 100%;
+                height: 100%;
+                min-height: 100%;
+                object-fit: cover;
+                margin-bottom: 1rem;
+                border-top-left-radius: 1.5rem;
+                border-top-right-radius: 1.5rem;
+
+            }
+
+            @include mixin.medium {
+                // margin-top: 4rem;
+                min-height: 25rem;
+            }
+      }
+
+      .price {
+        font-size: 3rem;
+        line-height: 1;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 1);
+        padding: 0 1.5rem;
+      }
+      
+      .lists {
+        margin-top: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        grid-row-gap: 0.75rem;
+        row-gap: 0.75rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        color: rgba(255, 255, 255, 1);
+        padding: 0 1.5rem;
+        margin-bottom: 3rem;
+      }
+      
+      .list {
+        display: flex;
+        align-items: center;
+      }
+      
+      .list svg {
+        height: 1rem;
+        width: 1rem;
+      }
+      
+      .list span {
+        margin-left: 1rem;
+      }
+}
+
+.adult-selection {
+    display: flex;
+    flex-direction: column;
+}
+
+.date-selection {
+    display: flex;
+    flex-direction: column;
+
+    .label-date {
+        margin-top: 1rem;
+    }
+}
+
+.message-avertissement {
+    font-weight: 800;
+    margin-bottom: 1rem;
+}

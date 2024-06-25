@@ -1,0 +1,353 @@
+@use '../mixin';
+
+.flex-nav {
+    display: inline-flex;
+    gap: 5rem;
+
+    @include mixin.big {
+        gap: 4rem;
+    }
+
+    @include mixin.medium {
+        gap: 2rem;
+    }
+
+    @include mixin.small {
+       
+    }
+}
+
+.body-home-nav{
+    display: flex;
+    // align-items: center;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: .5rem 0;
+
+        img {
+            width: 5rem;
+            min-width: 5rem;
+
+            @include mixin.small {
+              display: none;
+
+            }
+        }
+
+        .user-icon {
+            font-size: 1.5rem; // Ajustez la taille de l'icone
+        }
+
+        .icon-nav {
+          @include mixin.small {
+            font-size: 2.3rem;
+            margin-left: .5rem;
+          }
+        }
+
+        .icon-nav-connect {
+          @include mixin.small {
+            font-size: 1.8rem;
+          }
+        }
+
+        .logo-sound {
+          position: relative;
+          width: 16vw;
+
+
+          @include mixin.small {
+            order: 2;
+          }
+
+          @include mixin.medium {
+            width: 16vw;
+
+
+          }
+        }
+}
+
+.header {
+
+    &-navbar {
+        
+        a {
+            position: relative;
+        }
+
+        a::before{
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ed566d;
+            // transition: .3s;
+            transition: cubic-bezier(0.55, 0.055, 0.675, 0.19) .24s;
+
+        }
+
+        a:hover::before{
+            width: 100%;
+        }
+    }
+}
+
+a {
+    position: relative;
+}
+
+a::before{
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ed566d;
+    transition: .3s;
+}
+
+a:hover::before{
+    width: 100%;
+}
+
+.a-no-underline::before{
+    content: '';
+}
+
+.a-no-underline:hover::before{
+    width: 0%;
+}
+
+.profil-navigation {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    width: 16vw;
+
+    @include mixin.small {
+      margin-left: -2rem;
+    }
+}
+
+.margin-left-1 {
+    margin-left: 1rem;
+}
+
+.burger {
+    display:none;
+
+    @include mixin.small {
+      display: block;
+      position: relative;
+      padding: 0;
+      padding-top: .7rem;
+      padding-left: .15rem;
+      width: 35px;
+      height: 30px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+  }
+
+  .navbar__links { 
+
+    // display: none;
+
+    @include mixin.big {
+        display: none;
+    }
+
+    @include mixin.small {
+      flex-direction:column;
+      padding-top: 1rem;
+      width:0;
+      height:100vh;  
+      font-size: 1.5rem;
+      position:absolute;
+      top:50px;
+      right: -20%;     
+      background: rgba(0, 0, 0, 0.818);     
+      transform: translateX(-20%);
+      transition: all .5s ease-in-out;
+      z-index: 20;
+    }
+
+  }
+  .navbar__link { 
+    padding:0 10px;
+  }
+  .navbar__link > a { 
+    color: white;
+    text-decoration:none;
+
+  }
+
+@include mixin.small {
+    
+      .show-nav .navbar__links { 
+        width:60%;    
+        transform: translateX(-100%);
+      } 
+      
+      .bar {
+        display: block;    
+        width: 30px;
+        height: 3px;  
+        border-radius: 3px;
+        background: white; 
+        transition: all .5s ease-in-out;   
+        transform: translateY(-5px)
+
+      }
+
+      .bar::before, .bar::after {
+        content: "";
+        width: 30px;
+        height: 3px;
+        position: absolute; 
+        left: 0;  
+        background: white; 
+        border-radius: 3px;    
+        transition: all .5s ease-in-out;
+      }
+      .bar::before {
+        transform: translateY(-10px)
+      }
+      .bar::after {
+        transform: translateY(10px)
+      }
+      .show-nav .bar {
+        width:0;
+        background:transparent;    
+      }
+      .show-nav .bar::before {
+        transform:rotate(45deg);
+      }
+      .show-nav .bar::after {
+        transform:rotate(-45deg);
+      }
+}
+
+.logo-sound {
+
+  i  {
+  @include mixin.small {
+    // margin-top: 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }}
+
+  img {
+  
+    @include mixin.small {
+    width: .2rem;
+  }}
+
+  @include mixin.small {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // padding-top: 1rem;
+  }
+}
+
+.logo-header {
+  @include mixin.small {
+    width: .2rem;
+  }
+}
+
+.display_mobile {
+  display: none;
+
+  @include mixin.small {
+      display: block;
+  }
+}
+
+.display_desktop {
+
+  @include mixin.small {
+    display: none;
+  }
+}
+
+// -----------------------------------------------
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.toggle-switch input[type="checkbox"] {
+  display: none;
+}
+
+.toggle-switch-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ddd;
+  border-radius: 20px;
+  box-shadow: inset 0 0 0 2px #ccc;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.toggle-switch-handle {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.toggle-switch::before {
+  content: "";
+  position: absolute;
+  top: -25px;
+  right: -35px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #aaa;
+  text-shadow: 1px 1px #fff;
+  transition: color 0.3s ease-in-out;
+}
+
+.toggle-switch input[type="checkbox"]:checked + .toggle-switch-handle {
+  transform: translateX(45px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 0 0 3px #ff6262;
+}
+
+.toggle-switch input[type="checkbox"]:checked + .toggle-switch-background {
+  background-color: #ff6262;
+  box-shadow: inset 0 0 0 2px #ff6262;
+}
+
+.toggle-switch input[type="checkbox"]:checked + .toggle-switch:before {
+  content: "On";
+  color: #ff6262;
+  right: -15px;
+}
+
+.toggle-switch input[type="checkbox"]:checked + .toggle-switch-background .toggle-switch-handle {
+  transform: translateX(30px);
+}
+
+ 

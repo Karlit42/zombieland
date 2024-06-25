@@ -1,0 +1,26 @@
+<div class="tab-pane fade" id="attractions-bdd" role="tabpanel" aria-labelledby="attractions-tab">
+    <div class="card-body-user pb-2 header-reservations">
+        <h2>Mes attractions</h2>
+    </div>
+
+    <div class="container-reservations" aria-label="Liste des attractions">
+        <% for(let index=0; index < attractions.rows.length; index++) { %>
+            <article class="reservation-admin" aria-labelledby="attraction-<%= index %>">
+                <h3 id="attraction-<%= index %>"><%= attractions.rows[index].nom %></h3>
+                <div class="container-text-reservations">
+                    <p><%= attractions.rows[index].description.substring(0, 30) + '...' %></p>
+                    <a href="/attractions/<%= attractions.rows[index].slug %>" aria-label="Voir l'attraction <%= attractions.rows[index].nom %>">Voir l'attraction</a>
+                </div>
+            </article>
+        <% } %>
+        <div class="bouton-pagination" aria-label="Pagination des attractions">
+            <% if (hasPreviousPageAttractions) { %>
+                <a class="a-no-underline" href="/admin?pageAttractions=<%= previousPageAttractions %>" rel="prev">Précédent</a>
+            <% } %>
+            <% if (hasNextPageAttractions) { %>
+                <a class="a-no-underline" href="/admin?pageAttractions=<%= nextPageAttractions %>" rel="next">Suivant</a>
+            <% } %>
+        </div>
+    </div>
+    <!-- <hr class="border-light m-0"> -->
+</div>

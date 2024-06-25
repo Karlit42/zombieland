@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ZombieLand - Accueil</title>
+        <script src="https://kit.fontawesome.com/6484e6a0a2.js" crossorigin="anonymous"></script>
+        <script src="../js/global.js" defer></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap">
+        <link rel="stylesheet" href="../scss/index.scss">
+        <link rel="shortcut icon" href="../img/Favicon.png" type="image/x-icon">
+    </head>
+    <body class="body-login">
+        <header class="margin-RL">
+            <nav class="body-home-nav">
+                <img src="../img/Logo-transparent.png" alt="Logo ZombieLand">
+                <ul class="flex-nav">
+                    <li><a href="./index.html">Accueil</li>
+                    <li><a href="./attractions.html">Nos attractions</li>
+                    <li><a href="/">Réserver</li>
+                </ul>
+                <a href=""><i class="fa-regular fa-user user-icon"></i>
+            </nav>
+        </header>
+
+        <div class="login-container">
+            <form action="/login" method="POST" class="login-form">
+                <h2>Connexion</h2>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button class="button-form-login" type="submit">Se connecter</button>
+            </form>
+        </div>
+
+    <!-- <h2>se connecter</h2>
+    <p><a href="./inscription.html">vous n'avez pas de compte ? S'inscrire. </a></p>
+
+    <form>
+        <div>
+            <label for="email">Email :</label>
+            <input>
+        </div>
+        <div>
+            <label for="password">Mot de passe :</label>
+            <input>
+        </div>
+        <button type="submit">Se connecter</button>
+    </form> -->
+</body>
+</html>

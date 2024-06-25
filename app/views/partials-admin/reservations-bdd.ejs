@@ -1,0 +1,27 @@
+<div class="tab-pane fade active show" id="reservations-bdd" role="tabpanel" aria-labelledby="reservations-tab">
+    <div class="card-body-user pb-2 header-reservations">
+        <h2>Mes réservations clients</h2>
+        <!-- Le formulaire de recherche est commenté, mais si utilisé, assurez-vous d'inclure un texte de label accessible -->
+    </div>
+
+    <div class="container-reservations" aria-label="Liste des réservations clients">
+        <% for(let index=0; index < commande.rows.length; index++) { %>
+            <article class="reservation-admin" aria-labelledby="reservation-<%= index +1 %>">
+                <h3 id="reservation-<%= index %>"><%= commande.rows[index].utilisateur_nom %> <%= commande.rows[index].utilisateur_prenom %></h3>
+                <div class="container-text-reservations">
+                    <p>Reservation pour <%= commande.rows[index].nombre_de_personnes %> personnes le <%= commande.rows[index].date_de_reservation %> pour <%= commande.rows[index].prix_total %>€</p>
+                    <!-- Lien vers la réservation individuelle, si nécessaire, doit être rendu accessible -->
+                </div>
+            </article>
+        <% } %>
+        <div class="bouton-pagination" aria-label="Pagination des réservations">
+            <% if (hasPreviousPageCommande) { %>
+                <a class="a-no-underline" href="/admin?pageCommande=<%= previousPageCommande %>" rel="prev">Précédent</a>
+            <% } %>
+            <% if (hasNextPageCommande) { %>
+                <a class="a-no-underline" href="/admin?pageCommande=<%= nextPageCommande %>" rel="next">Suivant</a>
+            <% } %>
+        </div>
+    </div>
+    <!-- <hr class="border-light m-0"> -->
+</div>

@@ -1,0 +1,70 @@
+@use './mixin';
+
+:root {
+	--cards: 4;
+	--cardHeight: 87vh;
+	--cardTopPadding: 1.5em;
+	--cardMargin: 4vw;
+}
+
+.flex {
+    display: inline-flex;
+}
+
+html {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+body, nav, footer, a {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+body {
+    background-color: #000000;
+    color: white;
+    overflow-x: hidden;
+}
+
+.poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+.special-text {
+    font-family: 'Henny Penny', cursive;
+}
+
+.roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+.margin-RL {
+    margin: 0px 9rem;
+
+    @include mixin.big {
+        margin: 0px 6rem;
+    }
+
+    @include mixin.medium {
+        margin: 0px 3rem;
+    }
+
+    @include mixin.small {
+        margin: 0px 1rem;
+    }
+}
+
+.text-balance {
+    text-wrap: balance;
+}
+
+.margin-top {
+    margin-top: 5rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.no-text-deco {
+    text-decoration: none;
+}

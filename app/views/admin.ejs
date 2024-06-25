@@ -1,0 +1,64 @@
+<% if (typeof isLogged !=='undefined' && typeof isAdmin !=='undefined' ) { %>
+    <%- include('partials/header', { isLogged, isAdmin }) %>
+<% } else if (typeof isLogged !=='undefined' ) { %>
+    <%- include('partials/header', { isLogged }) %>
+<%} else { %>
+    <%- include('partials/header') %>
+<% } %>
+
+<main>
+    <section class="container light-style flex-grow-1 container-p-y" aria-label="Espace administration principale">
+        <h1 class="font-weight-bold py-3 mb-4 special-text">
+            Votre espace Admin :
+        </h1>
+        <div class="card overflow-hidden">
+            <div class="row no-gutters row-bordered row-border-light">
+                <nav class="col-md-3 pt-0" aria-label="Menu de navigation de l'administration">
+                    <div class="list-group list-group-flush account-settings-links">
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#reservations-bdd">Toutes les réservations</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#attractions-bdd">Toutes les attractions</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#user-bdd">Tous les utilisateurs</a>
+                    </div>
+                </nav>
+                <div class="col-md-9">
+                    <div class="tab-content">
+                        <% if (typeof error !=='undefined' ) { %>
+                            <p class="message message--error" role="alert">Erreur : <%= error %></p>
+                        <% } %>
+
+                        <% if (typeof alert !=='undefined' && typeof user !=='undefined' ) { %>
+                            <%- include('partials-admin/reservations-bdd', { alert, commande, hasNextPageCommande, hasPreviousPageCommande, nextPageCommande, previousPageCommande }) %>
+                        <% } else { %>
+                            <%- include('partials-admin/reservations-bdd', { commande, hasNextPageCommande, hasPreviousPageCommande, nextPageCommande, previousPageCommande }) %>
+                        <% } %>
+
+                        <% if (typeof alert !=='undefined' && typeof user !=='undefined' ) { %>
+                            <%- include('partials-admin/user-bdd', { alert, utilisateurs, hasNextPageUtilisateurs, hasPreviousPageUtilisateurs, nextPageUtilisateurs, previousPageUtilisateurs }) %>
+                        <% } else { %>
+                            <%- include('partials-admin/user-bdd', { utilisateurs, hasNextPageUtilisateurs, hasPreviousPageUtilisateurs, nextPageUtilisateurs, previousPageUtilisateurs }) %>
+                        <% } %>
+
+                        <% if (typeof alert !=='undefined' && typeof user !=='undefined' ) { %>
+                            <%- include('partials-admin/messagerie', { alert }) %>
+                        <% } else { %>
+                            <%- include('partials-admin/messagerie') %>
+                        <% } %>
+
+                        <% if (typeof alert !=='undefined' && typeof user !=='undefined' ) { %>
+                            <%- include('partials-admin/attractions-bdd', { alert, attractions, hasPreviousPageAttractions, hasNextPageAttractions, nextPageAttractions, previousPageAttractions }) %>
+                        <% } else { %>
+                            <%- include('partials-admin/attractions-bdd', { attractions, hasPreviousPageAttractions, hasNextPageAttractions, nextPageAttractions, previousPageAttractions }) %>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="/js/admin-page.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript"></script>
+</body>

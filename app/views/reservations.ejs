@@ -1,0 +1,92 @@
+<% if (typeof isLogged !=='undefined' && typeof isAdmin !=='undefined' ) { %>
+    <%- include('partials/header', { isLogged, isAdmin }) %>
+        <% } else if (typeof isLogged !=='undefined' ) { %>
+            <%- include('partials/header', { isLogged }) %>
+                <%} else { %>
+                    <%- include('partials/header') %>
+                        <% } %>
+
+                        <main class="main-reservations margin-RL">
+                            <section class="container-reservations">
+                            <form action="/reservations" class="form-reservations" method="post">
+                                <div class="first-article">
+                                <h1 class="special-text h1-reservations"><span class="h1-homepage">Réservez votre billet</span> pour une expérience inoubliable</h1>
+                                    <article class="card-reservations">
+                                        <% if (typeof error !=='undefined' ) { %>
+                                            <p class="message message--error" role="alert">Erreur : <%= error %>
+                                            </p>
+                                            <% } %>
+                                            <p class="message-avertissement">* Vous devez être connecté pour pouvoir faire une reservation</p>
+                                            <label for="ticket-selection">Nombre de jour(s)</label>
+                                            <select id="ticket-selection" name="nbJour">
+                                                <option value=1>1 jour</option>
+                                                <option value=2>2 jours</option>
+                                                <option value=3>3 jours</option>
+                                                <option value=4>4 jours</option>
+                                            </select>
+                                            
+                                            <label for="hotel-choice">Avec nuit à l'hôtel ?</label>
+                                            <div class="radio-group">
+                                                <input type="radio" id="hotel-yes" name="hotel" value="yes">
+                                                <label for="hotel-yes">Oui</label>
+                                                <input type="radio" id="hotel-no" name="hotel" value="no" checked>
+                                                <label for="hotel-no">Non</label>
+                                            </div>
+                                            
+                                            <div class="selection-group">
+                                                <div class="adult-selection">
+                                                    <label for="adults">Nombre de participant(s)</label>
+                                                    <select id="adults" name="adults">
+                                                        <option value=1>1 personne</option>
+                                                        <option value=2>2 personnes</option>
+                                                        <option value=3>3 personnes</option>
+                                                        <option value=4>4 personnes</option>
+                                                        <option value=5>5 personnes</option>
+                                                        <option value=6>6 personnes</option>
+                                                        <option value=7>7 personnes</option>
+                                                        <option value=8>8 personnes</option>
+                                                        <option value=9>9 personnes</option>
+                                                        <option value=10>10 personnes</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                    
+                                            <div class="date-selection">
+                                                <label for="start-date">Date de début</label>
+                                                <input class="input-date" type="date" id="start-date" name="dateRes">
+                                            </div>
+                                    </article>
+                                </div>
+                    
+                                    <article class="card-reservations-result">
+                                        <div class="card"> 
+                                            <img src="https://i.pinimg.com/originals/2f/7a/98/2f7a98fbff07bb9fa8b3bb19e891ae00.jpg" alt="Illustration du theme park ZombieLand">
+                                            <p class="price">65 €</p>
+                                            <ul class="lists">
+                                              <li class="list">
+                                                <i class="fa-solid fa-check"></i>
+                                                  <span class="span-jour">Vous avez choisis 1 jour</span>
+                                              </li>
+                                              <li class="list">
+                                                <i class="fa-solid fa-check"></i>
+                                                <span class="span-hotel">Sans hotêl</span>
+                                              </li>
+                                              <li class="list">
+                                                <i class="fa-solid fa-check"></i>
+                                                <span class="span-adult">Vous avez opté pour 1 personne</span>
+                                              </li>
+                                              <li class="list">
+                                                <i class="fa-solid fa-check"></i>
+                                                <span class="label-date" id="end-date-display">Du * Au *</span>
+                                              </li>
+                                            </ul>
+                                            <button type="submit" class="button-animate-blood">Confirmer la réservation</button>
+                                          </div>
+                                    </article>
+                                </form>
+                                </section>
+                            </main>
+
+<script src="/js/reservations.js" defer></script>
+
+<%- include('partials/footer') %>

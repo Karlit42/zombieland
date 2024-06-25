@@ -1,0 +1,228 @@
+@use '../mixin';
+
+.cart {
+  display: flex;
+  justify-content: space-between;
+
+  @include mixin.medium {
+    flex-direction: column;
+    align-items: center;
+    padding-right: 0;
+  }
+
+  @include mixin.big {
+    flex-direction: column;
+    align-items: center;
+} 
+}
+
+.touteslesresas {
+  display: flex;
+  flex-direction: column;
+  width: 55vw;
+
+  @include mixin.big {
+    width: 90vw;
+  }
+
+  @include mixin.small {
+    align-items: center;
+  }
+}
+
+.commande-card {
+  border: 1px solid rgba(255, 255, 255, 0.443);
+  border-radius: 10px;
+  box-shadow: rgba(255, 151, 151, 0.448) 0px 0px 20px, rgb(255, 255, 255) 0px 0px 3px;
+  margin: 2rem;
+  margin-left: 0;
+  width: 50vw;
+  background-color: black;
+
+  @include mixin.medium {
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+  }
+
+  @include mixin.small {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  img {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-bottom: 1rem;
+  }
+}
+
+.cart-card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem;
+  padding-bottom: 1rem;
+
+  @include mixin.medium {
+    flex-direction: row !important;
+  }
+
+  @include mixin.small {
+    flex-direction: column !important;
+    margin: 0;
+    padding: 1rem;
+  }
+  @include mixin.big {
+    gap: 1rem;
+    flex-direction: column;
+  }
+}
+
+.resas {
+  width: 100%;
+  margin-left: 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.303);
+
+    &:last-child {
+      border-bottom: none
+    }
+
+  @include mixin.medium {
+    min-width: 100%;
+  }
+
+  @include mixin.small {
+    flex-direction: column;
+    min-width: 100%;
+  }
+}
+
+.suppResa {
+  // Avant à 80%
+  width: 25vw;
+
+  @include mixin.big {
+    width: 90%;
+  }
+
+  @include mixin.medium {
+    width: 80%;
+  }
+
+  @include mixin.small {
+    width: auto;
+  }
+}
+
+.resa-link {
+  display: flex;
+  justify-content: end;
+  margin: 2rem;
+}
+
+.resa-infos {
+  @include mixin.big {
+    width: 20vw;
+  }
+
+  @include mixin.medium {
+    margin-left: 1rem;
+    width: 60%;
+  }
+
+  @include mixin.small {
+    width: 90%;
+
+  }
+}
+
+
+
+.total {
+  position: fixed;
+  top: 50%; // Centrer verticalement
+  transform: translateY(-60%);
+  right: 2rem;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  // margin-top: 32rem;
+
+  @include mixin.medium {
+    position: relative;
+    width: 80vw;
+    margin: 2rem auto; 
+    top: 0;
+    transform: translateY(0%);
+    right: 0%;
+  }
+
+  @include mixin.small {
+    margin: 2rem auto; 
+
+  }
+}
+
+.prix {
+  // color: #e5ffd4;
+  color: green;
+  font-size: x-large;
+  position: relative;
+  font-weight: bolder;
+}
+
+#totalPrice {
+    font-size: x-large;
+    font-weight: bolder;
+    position: relative;
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+
+    @include mixin.big {
+        width: 100%;
+        margin-top: 1rem;
+
+      }
+}
+
+.resaList {
+  font-size: calc(.6rem + .5vw);
+  padding: 0;
+  margin: 0;
+
+  @include mixin.medium {
+    font-size: calc(.9rem + .4vw);
+  }
+
+  @include mixin.small {
+    font-size: calc(1rem + .4vw);
+  }
+}
+
+.span-jour {
+    margin-left: 1rem;
+}
+
+.no-commande-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Utilise la hauteur complète de l'écran */
+  text-align: center; /* Centre le texte horizontalement dans le conteneur */
+}
+
+.no-commande-card h2 {
+  margin: 0; /* Enlève la marge par défaut du h2 */
+}
+
+.form-confirm-panier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

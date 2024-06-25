@@ -1,0 +1,41 @@
+@use '../mixin';
+
+footer {
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-content {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+
+    @include mixin.small {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.footer-links {
+    margin-top: 1rem;
+    list-style: none;
+    padding: 0;
+
+    @include mixin.small {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+}
+
+.footer-links li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.footer-links a {
+    color: #636363;
+    text-decoration: none;
+    z-index: 0;
+}

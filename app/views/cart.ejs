@@ -1,0 +1,83 @@
+<% if (typeof isLogged !=='undefined' && typeof isAdmin !=='undefined' ) { %>
+    <%- include('partials/header', { isLogged, isAdmin }) %>
+        <% } else if (typeof isLogged !=='undefined' ) { %>
+            <%- include('partials/header', { isLogged }) %>
+                <%} else { %>
+                    <%- include('partials/header') %>
+                        <% } %>
+
+    <main class="margin-RL">
+        
+
+        <% if ( commandeResult && commandeResult.rows.length > 0 ) { %>
+        <section>
+            <!-- <h2>Les réservations de <%= utilisateurResult.prenom %> <%= utilisateurResult.nom %> :</h2> -->
+            <div class="cart">
+                
+                <div class="touteslesresas">
+                    <h1 class="special-text">Votre Panier :</h1>
+                    <% for(let index=0; index < commandeResult.rows.length; index++) { %>
+                    <article class="commande-card">
+
+                        <div class="cart-card resas">
+
+                            <div class="resa-infos">
+                                <h3>Réservation n°<%=  commandeResult.rows[index].id %></h3>
+                                <p><%= commandeResult.rows[index].nombre_de_jours + (commandeResult.rows[index].nombre_de_jours === 1 ? ' jour' : ' jours') %> à partir du <%= commandeResult.rows[index].date_de_reservation %></p>
+                                <p>Pour <%= commandeResult.rows[index].nombre_de_personnes + (commandeResult.rows[index].nombre_de_personnes === 1 ? ' personne' : ' personnes') %> <%= commandeResult.rows[index].reservation_hotel === "yes" ? 'avec réservation hôtel' : 'sans réservation hôtel' %></p></p>
+                                <p>
+                                <p id="totalPrice" class="prix">Prix ttc : <%= commandeResult.rows[index].prix_total %>€</p> 
+                            </div>  
+                            <!-- <form method="POST" action="/panier">
+                                <input type="hidden" name="commande_id" value="<%= commandeResult.rows[index].id %>">
+                                <button type="submit" class="button-animate-blood">Supprimer cette réservation</button>
+                            </form>   -->
+                            <form class="effacer" method="POST" action="/panier">
+                                <input type="hidden" name="commande_id" value="<%= commandeResult.rows[index].id %>">
+                                <button type="button" class="button-animate-blood suppResa" onclick="confirmDelete()">Supprimer cette réservation</button>
+                            </form>
+                            
+                            <script>
+                                function confirmDelete() {
+                                    if (confirm("Êtes-vous sûr de vouloir supprimer cette réservation ?")) {
+                                        document.querySelector('.effacer').submit();
+                                    }
+                                }
+                                </script> 
+                        </div>
+                        
+                    </article>
+                    <% } %>
+                </div>
+                <article class="commande-card total">
+                    <img src="/img/imgPanier.png" alt="Illustration du theme park ZombieLand">
+               
+                    <% let prix = 0; %>
+                    <% for(let index=0; index < commandeResult.rows.length; index++) { %>
+                        <ul>
+                            <li class="list">
+                                <!-- <i class="fa-solid fa-check"></i> -->
+                                <span class="resaList">Réservation n°<%=  commandeResult.rows[index].id %> : <%= commandeResult.rows[index].prix_total %> €</span>
+                            </li>
+                            
+                        </ul>
+                        <% prix = prix + parseInt(commandeResult.rows[index].prix_total) %> 
+                        <% } %>
+                        <p class="prix">Prix total : <%= prix.toFixed(2) %> €</p>
+
+                        <form class="form-confirm-panier" action="/panier/confirmation" method="POST">
+                            <input type="hidden" name="commandeConfirm" value="">
+                            <button type="submit" class="button-animate-blood">Confirmer la réservation</button>
+                            <a class="button-animate-green a-no-underline" href="/reservations">Faire une autre réservation</a>
+                        </form>
+                    </article>
+
+                </div>
+        </section>
+        <% } else { %>
+            <section class="no-commande-card">
+                <h2> Vous n'avez pas de commande dans votre panier </h2>
+            </section>
+        <% } %>
+        <script src="/js/panier.js" defer></script>
+    </main>

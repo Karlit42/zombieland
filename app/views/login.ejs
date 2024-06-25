@@ -1,0 +1,35 @@
+<% if (typeof isLogged !=='undefined' && typeof isAdmin !=='undefined' ) { %>
+    <%- include('partials/header', { isLogged, isAdmin }) %>
+        <% } else if (typeof isLogged !=='undefined' ) { %>
+            <%- include('partials/header', { isLogged }) %>
+                <%} else { %>
+                    <%- include('partials/header') %>
+                        <% } %>
+                    <main class="container_attractions register-main">
+                        <form class="form-signup" action="/connexion" method="POST">
+                            <h2 class="title-signup special-text">Connectez-vous</h2>
+                            <p class="message-signup">Connectez-vous à votre compte dès maintenant afin de pouvoir
+                                réserver.</p>
+                            <% if (typeof alert !=='undefined' ) { %>
+                                <p class="message message--error" role="alert">Erreur : <%= alert %>
+                                </p>
+                                <% } %>
+
+                                    <label>
+                                        <input type="email" id="email" name="email" required placeholder=""
+                                            class="input-signup">
+                                        <span>Email</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="password" id="password" name="password" required minlength="6"
+                                            placeholder="" class="input-signup">
+                                        <span>Mot de passe</span>
+                                    </label>
+
+                                    <button type="submit" class="button-animate-blood">Connexion</button>
+                                    <p class="signin-signup">Vous n'avez pas de compte ? <a class="a-no-underline"
+                                            href="/inscription">Inscrivez-vous</a>
+                                    </p>
+                        </form>
+                    </main>

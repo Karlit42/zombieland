@@ -1,0 +1,51 @@
+<% if (typeof isLogged !=='undefined' && typeof isAdmin !=='undefined' ) { %>
+    <%- include('partials/header', { isLogged, isAdmin }) %>
+        <% } else if (typeof isLogged !=='undefined' ) { %>
+            <%- include('partials/header', { isLogged }) %>
+                <%} else { %>
+                    <%- include('partials/header') %>
+                        <% } %>
+                    <main class="container_attractions register-main">
+                        <form class="form-signup" action="/inscription" method="POST">
+                            <h2 class="title-signup special-text">Inscrivez-vous</h2>
+                            <p class="message-signup">Créez-vous un compte dès maintenant afin de pouvoir réserver.</p>
+                            <% if (typeof alert !=='undefined' ) { %>
+                                <p class="message message--error" role="alert">Erreur : <%= alert %>
+                                </p>
+                                <% } %>
+                                    <div class="flex-signup">
+                                        <label>
+                                            <input type="text" id="firstname" name="firstname" required placeholder=""
+                                                class="input-signup">
+                                            <span>Prénom</span>
+                                        </label>
+
+                                        <label>
+                                            <input type="text" id="name" name="name" required placeholder=""
+                                                class="input-signup">
+                                            <span>Nom</span>
+                                        </label>
+                                    </div>
+
+                                    <label>
+                                        <input type="email" id="email" name="email" required placeholder=""
+                                            class="input-signup">
+                                        <span>Email</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="password" id="password" name="password" required minlength="6"
+                                            placeholder="" class="input-signup">
+                                        <span>Mot de passe</span>
+                                    </label>
+                                    <label>
+                                        <input required="" placeholder="" type="password" name="confirmPassword"
+                                            class="input-signup">
+                                        <span>Confirmation Mot de passe</span>
+                                    </label>
+
+                                    <button type="submit" class="button-animate-blood">Inscription</button>
+                                    <p class="signin-signup">Vous avez déjà un compte ? <a class="a-no-underline" href="/connexion">Se
+                                            connecter</a> </p>
+                        </form>
+                    </main>

@@ -1,0 +1,28 @@
+<% if (typeof isLogged !=='undefined' && typeof isAdmin !=='undefined' ) { %>
+  <%- include('partials/header', { isLogged, isAdmin }) %>
+      <% } else if (typeof isLogged !=='undefined' ) { %>
+          <%- include('partials/header', { isLogged }) %>
+              <%} else { %>
+                  <%- include('partials/header') %>
+                      <% } %>
+          <main class="content-erreur">
+            <section class="content-erreur-section">
+              <div class="text-erreur">
+                <h1 class="content-erreur-title">Erreur</h1>
+                <% if (typeof error !=='undefined') { %>
+              <p><%= error %></p>
+              <% } else { %>
+
+                <p><%=  'Cette page n\'existe pas !' %></p>
+                <% } %>
+              </div>
+
+              <div class="img-erreur display_desktop">
+                <img src="https://i.pinimg.com/originals/17/e7/7b/17e77bb9eeec928bab53dfe2a0d92a4d.jpg" alt="Image de la page 404">
+              </div>
+
+              <div class="img-erreur-mobile display_mobile">
+                <img src="https://i.pinimg.com/originals/2c/46/a9/2c46a95193cc0cc325d5b08a19967e02.jpg" alt="Image de la page 404">
+              </div>
+            </section>
+          </main>

@@ -1,0 +1,43 @@
+@use '../mixin';
+
+// .cart-card {
+//     display: flex;
+//     justify-content: space-around;
+//     align-items: center;
+//     margin: 1rem;
+//     padding-bottom: 1rem;
+//     width: 100%;
+
+//     @include mixin.medium {
+//         flex-direction: column;
+//     }
+// }
+
+
+
+
+
+// .total {
+//     position: fixed;
+//     width: 30vw;
+//     right: 2rem;
+//     top: 3.5rem;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     align-items: center;
+   
+//     @include mixin.big {
+//         max-width: 20rem;
+//         position: relative;
+//         top: 0;
+//         right: 0;
+//     }
+
+//     @include mixin.medium {
+//         width: 80vw;
+//     }
+// }
+
+
+

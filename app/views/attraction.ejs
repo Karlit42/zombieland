@@ -1,0 +1,99 @@
+<% if (typeof isLogged !=='undefined' && typeof isAdmin !=='undefined' ) { %>
+    <%- include('partials/header', { isLogged, isAdmin }) %>
+        <% } else if (typeof isLogged !=='undefined' ) { %>
+            <%- include('partials/header', { isLogged }) %>
+                <%} else { %>
+                    <%- include('partials/header') %>
+                        <% } %>
+                    <main class="container_attractions">
+                        <h1 class="h1-attractions special-text">Welcome to the <%= result.rows[0].nom %>
+                        </h1>
+                        <section class="attraction-flex">
+                            <article class="fifty">
+                                <div class="swiper mySwiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="<%= result.rows[0].photo_url_1 %>"
+                                                alt="image de l'attraction <%= result.rows[0].nom %>">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="<%= result.rows[0].photo_url_2 %>"
+                                                alt="image de l'attraction <%= result.rows[0].nom %>">
+                                        </div>
+                                        <% if (result.rows[0].photo_url_3 !=='' ) { %>
+                                            <div class="swiper-slide">
+                                                <img src="<%= result.rows[0].photo_url_3 %>"
+                                                    alt="image de l'attraction <%= result.rows[0].nom %>">
+                                            </div>
+                                            <% } %>
+
+                                                <% if (result.rows[0].photo_url_4 !=='' ) { %>
+                                                    <div class="swiper-slide">
+                                                        <img src="<%= result.rows[0].photo_url_4 %>"
+                                                            alt="image de l'attraction <%= result.rows[0].nom %>">
+                                                    </div>
+                                                    <% } %>
+
+                                                        <% if (result.rows[0].photo_url_5 !=='' ) { %>
+                                                            <div class="swiper-slide">
+                                                                <img src="<%= result.rows[0].photo_url_5 %>"
+                                                                    alt="image de l'attraction <%= result.rows[0].nom %>">
+                                                            </div>
+                                                            <% } %>
+                                    </div>
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-pagination"></div>
+                                    <div class="autoplay-progress">
+                                        <svg viewBox="0 0 48 48">
+                                            <circle cx="24" cy="24" r="20"></circle>
+                                        </svg>
+                                        <span></span>
+                                    </div>
+                                </div>
+
+
+                            </article>
+                            <article class="attraction-article">
+                                <h2 class="special-text h2-attraction">À quoi s'attendre ?</h2>
+                                <p class="text-balance p-attraction-title">
+                                    <%= result.rows[0].description %>
+                                </p>
+                                <h2 class="h2-attraction special-text">Horaires d'ouverture :</h2>
+                                <p>
+                                    Ouvert <%= result.rows[0].horaires %>
+                                </p>
+                            </article>
+                        </section>
+                    </main>
+                    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+                    <!-- Initialize Swiper -->
+                    <script>
+                        const progressCircle = document.querySelector(".autoplay-progress svg");
+                        const progressContent = document.querySelector(".autoplay-progress span");
+                        var swiper = new Swiper(".mySwiper", {
+                            spaceBetween: 30,
+                            centeredSlides: true,
+                            autoplay: {
+                                delay: 5000,
+                                disableOnInteraction: false
+                            },
+                            pagination: {
+                                el: ".swiper-pagination",
+                                clickable: true
+                            },
+                            navigation: {
+                                nextEl: ".swiper-button-next",
+                                prevEl: ".swiper-button-prev"
+                            },
+                            off: {
+                                autoplayTimeLeft(s, time, progress) {
+                                    progressCircle.style.setProperty("--progress", 1 - progress);
+                                    progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+                                }
+                            }
+                        });
+                    </script>
+
+                    <%- include('partials/footer') %>

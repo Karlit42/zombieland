@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZombieLand</title>
+    <meta name="description" content="ZombieLand est bien plus qu'un simple parc d'attractions, c'est une expérience terrifiante, palpitante et mémorable qui plonge les visiteurs au cœur d'un univers post-apocalyptique où les zombies règnent en maîtres.">
+    <script src="https://kit.fontawesome.com/6484e6a0a2.js" crossorigin="anonymous"></script>
+    <script src="/js/global.js" defer></script>
+    <script src="/js/bisounours.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/styles/index.css">
+    <link rel="shortcut icon" href="/img/Favicon.png" type="image/x-icon">
+</head>
+
+<body id="body" class="body-home">
+    <header class="margin-RL header">
+        <nav class="body-home-nav header-navbar navbar">
+            <div class="logo-sound">
+                <img src="/img/Logo-transparent.png" alt="Logo ZombieLand" class="logo-header">
+                <i class="fa-solid fa-volume-xmark" id="sound" title="logo "></i>
+                <label id="switch-container" class="toggle-switch ">
+                    <input id="switch" type="checkbox">
+                    <div class="toggle-switch-background">
+                      <div class="toggle-switch-handle"></div>
+                    </div>
+                </label>
+            </div>
+            <ul class="flex-nav margin-left-1 display_desktop">
+                <li class="navbar__link first"><a href="/" title="Accueil du site">Accueil</a></li>
+                <li class="navbar__link second"><a href="/attractions" title="Voir toutes nos attractions">Nos attractions</a></li>
+                <li class="navbar__link third"><a href="/reservations" title="Réservez votre séjour !!!">Réserver</a></li>
+            </ul>
+
+            <ul class="flex-nav margin-left-1 navbar__links" style="display: none;">
+                <li class="navbar__link first"><a href="/" title="Accueil du site">Accueil</a></li>
+                <li class="navbar__link second"><a href="/attractions" title="Voir toutes nos attractions">Nos attractions</a></li>
+                <li class="navbar__link third"><a href="/reservations" title="Réservez votre séjour !!!">Réserver</a></li>
+
+            <% if (typeof isLogged =='undefined' || isLogged == false ) { %>
+                <li class="navbar__link"><a href="/connexion" title="Connexion">Connexion</a></li>
+                <% } %>
+            <% if (typeof isLogged !=='undefined' ) { %>
+                <li class="navbar__link"><a href="/profil" title="Accéder a mon profil">Mon profil</a></li>
+                <% } %>
+            <% if (typeof isLogged !=='undefined' ) { %>
+                <li class="navbar__link"><a href="/panier" title="Accéder a mon panier">Mon panier</a></li>
+                <% } %>
+
+            <% if (typeof isLogged !=='undefined' ) { %>
+                    <% if ( isAdmin == true ) { %>
+                    <li class="navbar__link"><a href="/admin" title="Accéder a l'espace admin">Espace admin</a></li>
+                    <% } %>
+                <% } %>
+
+            <% if (typeof isLogged !=='undefined' ) { %>
+                <li class="navbar__link"><a href="/deconnexion" title="Se déconnecter">Se déconnecter</a></li>
+                <% } %>
+            </ul>
+
+            <button class="burger">
+                <span class="bar"></span>
+            </button>
+
+            <% if (typeof isLogged !=='undefined' ) { %>
+                <div class="profil-navigation display_desktop">
+                    <% if (isAdmin == true ) { %>
+                        <a href="/admin" class="go-profil a-no-underline display_desktop" title="Page admin"><i class="fa-regular fa-star"></i></a>
+                        <% } %>
+                    <a href="/profil" class="go-profil a-no-underline display_desktop" title="Page profil"><i
+                            class="fa-regular fa-face-smile icon-nav-connect"></i></a>
+                
+                    <a href="/panier" class="go-profil a-no-underline display_desktop" title="Voir mon panier"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="/deconnexion" class="go-deconnexion a-no-underline display_desktop" title="Deconnexion"><i
+                            class="fa-solid fa-arrow-right-from-bracket icon-nav-connect"></i></a>
+                </div>
+                <% } else { %>
+                <div class="profil-navigation">
+                    <a href="/connexion" class="go-connexion a-no-underline display_desktop" title="Connexion"><i
+                            class="fa-regular fa-user user-icon icon-nav"></i></a>
+                    <!-- <a href="/panier" class="go-profil a-no-underline display_desktop" title="Voir mon panier"><i class="fa-solid fa-cart-shopping"></i></a> -->
+                </div>
+                    <% } %>
+        </nav>
+        <figure>
+            <audio  id="audio" src="/son/ZombieSound.mp3"></audio>
+            <!-- <audio class="is-visually-hidden" id="audioLaugh" src="/son/rire-zombie.mp3"></audio> -->
+            <audio class="is-visually-hidden" id="audioLaugh" src="/son/ZomBruit.wav"></audio>
+            <!-- <audio class="is-visually-hidden" id="audioSparkling" src="/son/sparkling.mp3"></audio> -->
+            <audio class="is-visually-hidden" id="audioSparkling" src="/son/Xylo.wav"></audio>
+            <audio class="is-visually-hidden" id="audioLeadUp" src="/son/leadUp.mp3"></audio>
+            <audio class="is-visually-hidden" id="audioBisounours" src="/son/BisounoursSoundbis.wav"></audio>
+        </figure>
+    </header>
+
+                    <div id="banner-home" class="banner-home"></div>
+
+                    <main class="main-home margin-RL">
+                        <section class="main-home-section margin-top">
+                            <div class="main-home-section-text">
+                                <h1 class="special-text">Bienvenue au parc <span id="title-zombie" class="h1-homepage">ZombieLand</span> <span id="title-choupi" class="is-visually-hidden">ChoupiLand</span> <span id="exclamation-title">!</span> <span id="coeur-title" class="is-visually-hidden" >&#9825;</span></h1>
+                                <p class="">ZombieLand est bien plus qu'un simple parc d'attractions, c'est une
+                                    expérience terrifiante,
+                                    palpitante et mémorable qui plonge les visiteurs au cœur d'un univers
+                                    post-apocalyptique où les
+                                    zombies règnent en maîtres. Conçu pour les amateurs d'horreur, d'aventure et de
+                                    frissons, ZombieLand
+                                    est un lieu où l'imagination rencontre la réalité, offrant une expérience unique en
+                                    son genre pour
+                                    tous ceux qui osent y pénétrer.</p>
+                            </div>
+                        </section>
+                        <!-- Card des attractions du parc -->
+                        <section class="main-home-section-article flex">
+                            <section class="attractions home-attractions">
+                                <% for(let index=0; index < 3; index++) { %>
+                                    <article class="attractions-card">
+                                        <h2 class="special-text text-card-home">
+                                            <%= result.rows[index].nom %>
+                                        </h2>
+                                        <div id="img-card" class="container-img-attractions">
+                                            <img src="<%= result.rows[index].photo_url_4 %> "
+                                                alt="image de l'attraction<%= result.rows[index].nom %>">
+                                        </div>
+                                        <div id="img-card-clean" class="container-img-attractions is-visually-hidden">
+                                            <img src="/img/attraction-clean-<%=index + 1%>.webp"
+                                                alt="image de l'attraction<%= result.rows[index].nom %>">
+                                        </div>
+                                        <p class="text-balance">
+                                            <%= result.rows[index].description.substring(0, 110) + '...' %>
+                                        </p>
+                                    </article>
+                                    <% } %>
+                            </section>
+                        </section>
+                        <a href="/attractions" class="button-animate-blood button-home-attractions a-no-underline">Voir
+                            toutes les
+                            attractions</a>
+
+                            <!-- Météo homepage -->
+                        <section class="meteo">
+
+                            <article class="meteo-card">
+                                <h2 class="special-text">Quel temps fait-il ici ?</h3>
+                                <img  width="90%" height="70%" src="<%= weatherData.weather_icons[0] %>" alt="icone de la météo <%= weatherData.weather_descriptions[0] %> ">
+                                <p>La température à <span class="special-text">ZombieLand</span> est actuellement de <%= weatherData.temperature %> °C mais attention la température ressentie est de <%= weatherData.feelslike %> °C</p>  
+                            </article>
+                            <article class="meteo-card meteo-card-left">
+                                <h2 class="special-text">Où sommes-nous ?</h2>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21196.835086432944!2d3.0742558131344766!3d48.38733546134377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ef4051d46f5aa7%3A0x40b82c3688c4990!2s77130%20La%20Tombe!5e0!3m2!1sfr!2sfr!4v1708359297292!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <p class="text-balance">Le parc d'attractions ZombieLand se situe sur la commune de La Tombe en Seine-et-Marne à 98 km au sud-est de Paris (et 7314 km d'Haïti)</p>
+                            </article>
+                            
+                        </section>
+                       
+
+                     
+                        
+
+                        <!-- Météo homepage -->
+
+                        <!-- Séléction d'Image du parc -->
+
+                        <div id="container-card-home" class="container-cards">
+                            <ul id="cards-carroussel">
+                                <li class="card-carroussel" id="card1">
+                                    <div class="card-body">
+                                        <img src="https://i.pinimg.com/originals/37/cc/73/37cc73caff0e96a4e9b8ce0329664704.jpg" alt="">
+                                    </div>
+                                </li>
+                                <li class="card-carroussel" id="card2">
+                                    <div class="card-body">
+                                        <img src="https://i.pinimg.com/originals/67/a5/99/67a59961cba5b5318e38ee06170cc5b2.jpg" alt="">
+                                    </div>
+                                </li>
+                                <li class="card-carroussel" id="card3">
+                                    <div class="card-body">
+                                        <img src="https://i.pinimg.com/originals/4c/10/5c/4c105cbd295276cb99bc852fb5fda392.jpg" alt="">
+                                    </div>
+                                </li>
+                                <li class="card-carroussel" id="card4">
+                                    <div class="card-body">
+                                        <img src="https://i.pinimg.com/originals/18/9d/69/189d69eb9c726d866c5c504212487f78.jpg" alt="">
+                                    </div>
+                                </li>
+                                <li class="card-carroussel" id="card5">
+                                    <div class="card-body">
+                                        <img src="https://i.pinimg.com/originals/6f/cf/c3/6fcfc36b07d18fc4bd255a33547a8013.jpg" alt="">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div id="container-card-home-clean" class="container-cards is-visually-hidden">
+                            <ul id="cards-carroussel">
+                                <li class="card-carroussel" id="card1">
+                                    <div class="card-body">
+                                        <img src="https://i.pinimg.com/originals/8f/9f/f4/8f9ff439bdb5ecef78b486e043138182.jpg" alt="">
+                                    </div>
+                                </li>
+                                <li class="card-carroussel" id="card2">
+                                    <div class="card-body">
+                                        <img src="https://i.pinimg.com/originals/34/1f/b0/341fb0077f7cade0a1261c61fcd65c81.jpg" alt="">
+                                    </div>
+                                </li>
+                                <li class="card-carroussel" id="card3">
+                                    <div class="card-body">
+                                        <img src="https://i.pinimg.com/originals/a4/fd/e2/a4fde232d8027b78a80e839ae9876c81.jpg" alt="">
+                                    </div>
+                                </li>
+                                <li class="card-carroussel" id="card4">
+                                    <div class="card-body">
+                                        <img src="https://i.pinimg.com/originals/ba/76/e5/ba76e5231607dfa11826f30cc37632a6.jpg" alt="">
+                                    </div>
+                                </li>
+                                <li class="card-carroussel" id="card5">
+                                    <div class="card-body">
+                                        <img src="https://i.pinimg.com/originals/3c/d7/40/3cd740db81f94a3f9d23171b8caa2def.jpg" alt="">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                   
+                        <!-- Mode bisounours -->
+                        <section class="container-bisounours">
+                            <img class="gif_bisounours is-visually-hidden" src="https://i.pinimg.com/originals/96/4a/10/964a10743a71ff80dd57beb795cf98e0.gif" alt="">
+                            <div class="white-screen is-visually-hidden"></div>
+                            <div class="interdit is-visually-hidden">
+                                <div class="warning">
+                                    <img src="https://i.pinimg.com/originals/6d/0b/35/6d0b35aaa3378482e946550c5ed30586.gif" alt="Panneau warning">
+                                </div>
+                                <div class="textwarning">
+                                    <!-- <h2>Un humain croit pouvoir échapper à l'horreur !</h2> -->
+                                    <h2>Les revenants reviennent toujours !</h2>
+                                </div>
+                            </div>
+                            <div class="arc-en-ciel"></div>
+                        </section>
+                    </main>
+
+                    <script src="/js/bisounours.js"></script>
+                    <script src="/js/map.js"></script>
+
+                    <%- include('partials/footer') %>

@@ -1,0 +1,38 @@
+<div class="tab-pane fade" id="account-info">
+    <% let found = false; %>
+    <% if (commandeUser) { %>
+    <% for(let index = 0; index < commandeUser.rows.length; index++) { %>
+        <% if (commandeUser.rows[index].statut == false) { %> 
+            <% found = true; %>
+            <div class="container-reservations-user">
+                <form id="adminAccountForm" action="/profil/reservations" method="POST">
+                    <article class="reservation-admin">
+                        <h3>Réservation n°<%= commandeUser.rows[index].id %></h3>
+                        <div class="container-text-user-admin flex-start-user">
+                            <div class="info-user-reservations">
+                                <p>Vous avez réservé pour le <%= commandeUser.rows[index].date_de_reservation %></p>
+                                <p>Pour <%= commandeUser.rows[index].nombre_de_jours %> jour(s)</p>
+                                <% if (commandeUser.rows[index].reservation_hotel == 'yes') { %>
+                                    <p>Avec un hôtel</p>
+                                <% } else { %>
+                                    <p>Sans hôtel</p>
+                                <% } %>
+                                <p>Pour <%= commandeUser.rows[index].nombre_de_personnes %> personne(s)</p>
+                            </div>
+                            <label>
+                                <input type="text" class="form-control mb-1 is-visually-hidden" value="<%= commandeUser.rows[index].id %>" name="idUserAdmin" required>
+                            </label>
+                            <!-- <button class="button-admin" onclick="if(confirm('Êtes-vous sûr de vouloir rendre admin ou enlever l\'admin cette personne ?')){ document.getElementById('adminAccountForm').submit(); }">Rendre Admin</button> -->
+                        </form>
+                        </div>
+                    </article>
+            </div>
+        <% } %>
+    <% } %>
+    <% } %>
+    <% if (!found) { %>
+        <div class="card-body-user pb-2">
+            <h2>Vous n'avez pas de réservations</h2>
+        </div>
+    <% } %>
+</div>

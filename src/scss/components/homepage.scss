@@ -1,0 +1,342 @@
+@use '../mixin';
+
+.body-home {
+    background-color: #000000;
+    color: white;
+
+    img {
+        max-width: 50rem;
+    }
+    
+    .banner-attractions {
+        background-image: url('https://i.pinimg.com/originals/48/63/1a/48631a21433285d6ea5a0122a8b5fd16.jpg');
+        background-size: cover;
+        background-position: 20% 30%;
+        background-repeat: no-repeat;
+        box-shadow: rgb(0, 0, 0) 0px -80px 56px -28px inset;
+        max-width: 100vw;
+        min-width: 100vw;
+        height: 40rem;
+
+        @include mixin.medium {
+            height: 30rem;
+
+        }
+
+        @include mixin.small {
+            height: 30rem;
+            background-position: center;
+        }
+    }
+
+    .banner-home {
+        background-image: url('https://i.pinimg.com/originals/a7/7a/5d/a77a5dcb03bf80d435a1c9cc5d95ccea.jpg');
+        background-size: cover;
+        background-position: 50% 60%;
+        background-repeat: no-repeat;
+        box-shadow: rgb(0, 0, 0) 0px -70px 56px -28px inset;
+        max-width: 100vw;
+        min-width: 100vw;
+        height: 40rem;
+    
+        @include mixin.medium {
+            height: 30rem;
+
+        }
+    
+        @include mixin.small {
+            height: 30rem;
+            background-position: center;
+
+        }
+    }
+
+    .main-home-section {
+        display: flex;
+        align-items: center;
+
+            &-text{
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                    h1 {
+                        text-align: left;
+                        word-wrap: normal;
+                        margin-bottom: 5rem;
+
+                        @include mixin.small {
+                            padding: 0px;
+                        }
+                    }
+
+                    p {
+                        font-size: calc(.5rem + 1vw);
+
+                        @include mixin.small {
+                            font-size: calc(.5rem + 2vw);
+                            // font-size: 20rem;
+                        }
+                    }
+            }
+
+            @include mixin.small {
+                flex-direction: column;
+            }
+    }
+
+    .main-home-banner {
+        height: 40%;
+        width: 45%;
+        min-width: 45%;
+        border-radius: 10px;
+        // box-shadow: rgba(255, 151, 151, 0.18) 0px 1px 1px, rgba(255, 145, 145, 0.18) 0px 2px 2px, rgba(255, 128, 128, 0.18) 0px 4px 4px, rgba(255, 92, 92, 0.18) 0px 8px 8px, rgba(255, 98, 98, 0.18) 0px 16px 16px;
+        box-shadow: rgba(255, 151, 151, 0.448) 0px 0px 20px, rgb(255, 255, 255) 0px 0px 3px;
+
+
+            img {
+                width: 100%; // L'image prendra 100% de la largeur de son conteneur
+                height: 100%; // Pour maintenir les proportions de l'image
+                display: block;
+                border-radius: 10px;
+                
+            }
+    }
+
+    .main-home-section-article {
+        // background-color: aquamarine;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        position: relative;
+        margin-top: 2rem;
+
+        .home-attractions {
+            margin-top: 5rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-between;     
+
+            article:nth-of-type(3) {
+                @include mixin.big {
+                    display: none;
+                }
+              }
+        }
+
+            &-card {
+                // width: 32rem;
+                // height: 45rem;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                       
+                    }
+            }
+    }
+}
+
+.main-home .button-home-attractions {
+    width: 30rem;
+    display: block;
+    margin: 2rem auto;
+
+    @include mixin.small {
+        width: 80vw;
+    }
+}
+
+// meteoooooooooo--------------------
+
+.meteo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    @include mixin.small {
+        flex-direction: column;
+    }
+}
+
+.meteo-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 45%;
+    height: 30vh;
+    padding: 1rem;
+    margin: 1rem;
+    text-align: center;
+    box-shadow: rgba(255, 151, 151, 0.448) 0px 0px 20px, rgb(255, 255, 255) 0px 0px 3px;
+
+    @include mixin.medium {
+        width: 95%;
+    }
+
+
+    img, iframe {
+        width: 70%;  
+        height: 65%;
+        border: 1px solid white;
+        border-radius: 6px; 
+    }
+}
+
+.meteo-card {
+    justify-content: center;
+    gap: 1rem;
+}
+
+// meteoooooooooooo-----------------
+
+.banner-footer-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+
+        // &-button {}
+
+        &-content {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid white;
+            border-radius: 10px;
+            box-shadow: rgba(255, 151, 151, 0.448) 0px 0px 20px, rgb(255, 255, 255) 0px 0px 3px;
+
+            img {
+                border-radius: 10px;
+            }
+        }
+}
+
+.h1-homepage {
+    // width: 1rem;
+    position: relative; 
+
+        &::after {
+            content: "";
+            // width: 20.2vw;
+            width: 102%;
+            height: 3px;
+            position: absolute; 
+            bottom: 20px;  
+            left: 0;
+            background: rgb(255, 82, 82); 
+            border-radius: 3px;
+            transition: all .5s ease-in-out;
+            z-index: -1;
+
+            @include mixin.small {
+                bottom: 10px;  
+            }
+        }
+}
+
+.container-cards {
+	width: 90%;
+	margin: 0 auto;
+}
+
+#cards-carroussel {
+	list-style: none;
+	padding-left: 0;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(var(5), var(87vh));
+	gap: var(4vw);
+	padding-bottom: calc(var(5) * var(1.5em));
+	margin-bottom: var(4vw);
+}
+
+#card1 {
+	--index: 1;
+}
+#card2 {
+	--index: 2;
+}
+#card3 {
+	--index: 3;
+}
+#card4 {
+	--index: 4;
+}
+#card5 {
+	--index: 5;
+}
+
+.card-carroussel {
+	position: sticky;
+	top: 0;
+	padding-top: calc(var(--index) * 1.5em);
+
+    @include mixin.small {
+        padding-top: calc(var(--index) * 3.5em);
+
+    }
+}
+
+.card-body {
+	padding: 0;
+	border-radius: 50px;
+	box-shadow: 0 0 30px 0 rgba(0,0,0,0.3);
+	height: 87vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.5s;
+    box-shadow: rgba(255, 255, 255, 0.05)0px 0px 2px, rgba(255, 169, 169, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+
+    img {
+        width: 100%;
+        min-width: 100%;
+        height: 100%;
+        min-height: 100%;
+        object-fit: cover;
+	    border-radius: 50px;
+    }
+
+    @include mixin.big {
+        height: 50vh;
+    }
+
+    @include mixin.medium {
+        height: 60vh;
+    }
+
+    @include mixin.small {
+        height: 30rem;
+    }
+}
+
+#sound {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#audio {
+    display: none;
+}
+
+.logo-sound {
+    img {
+        margin-right: 2rem;
+    }
+}
+
+.user-icon {
+    @include mixin.small {
+        font-size: 1.6rem !important;
+    }
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+  }

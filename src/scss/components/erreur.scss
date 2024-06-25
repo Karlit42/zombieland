@@ -1,0 +1,69 @@
+@use '../mixin';
+
+.content-erreur {
+
+        &-section {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            height: 80vh;
+            width: 100vw;
+
+
+                .img-erreur{
+                    width: 80vw;
+                    height: 100%;
+                    border-radius: 15px;
+
+                    @include mixin.medium {
+                        margin-top: 2rem;
+                        width: 100%;
+                        height: 80%;
+                    }
+                }
+
+                .img-erreur-mobile {
+                    @include mixin.small {
+                        height: 100%;
+                        border-radius: 15px;
+                        margin-top: 5rem;
+                        width: auto;
+
+                    }
+                }
+
+                .text-erreur {
+                    position: absolute;
+                    background-color: rgba(0, 0, 0, 0.471);
+                    padding: 1rem;
+                    top: 50%;
+                    border-radius: 15px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    min-width: 50vw;
+                    width: 50vw;
+
+                    @include mixin.small {
+                        min-width: 80vw;
+                        width: 80vw;
+                }}
+
+                img {
+                    min-width: 100%;
+                    width: 100%;
+                    height: 100%;
+                    margin-bottom: 2rem;
+                    border-radius: 15px;
+
+
+                    @include mixin.small {
+                        min-width: 90vw;
+                        width: 90vw;
+                    }
+                }
+        }
+}

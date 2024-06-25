@@ -1,0 +1,46 @@
+<div class="tab-pane fade" id="user-bdd">
+    <div class="card-body-user pb-2 header-reservations">
+        <h2>Mes réservations clients</h2>
+        <!-- <form class="form-reservations-bdd" action="/admin/recherche/user" method="GET">
+            <label for="search"></label>
+            <input type="text" id="search" name="search" placeholder="Entrez votre recherche...">
+            <button type="submit">Rechercher</button>
+        </form> -->
+    </div>
+    
+    <div class="container-reservations">
+        <% for(let index=0; index < utilisateurs.rows.length; index++) { %>
+                <form id="adminAccountForm" action="/admin/utilisateur/admin" method="POST">
+            <article class="reservation-admin">
+                <h3><%= utilisateurs.rows[index].nom %> <%= utilisateurs.rows[index].prenom %></h3>
+                <div class="container-text-user-admin">
+                    <p><%= utilisateurs.rows[index].email %> - Admin : <%= utilisateurs.rows[index].admin %></p>
+
+                    <label>
+                        <input type="text" class="form-control mb-1 is-visually-hidden" value="<%= utilisateurs.rows[index].id %>" name="idUserAdmin" required>
+                    </label>
+                    <button class="button-admin" onclick="if(confirm('Êtes-vous sûr de vouloir rendre admin ou enlever l\'admin cette personne ? '))
+                    { document.getElementById('adminAccountForm').submit(); }">Rendre Admin</button>
+                </form>
+                <form id="deleteAccountForm" action="/admin/utilisateur/supprimer" method="POST">
+                    <label>
+                        <input type="text" class="form-control mb-1 is-visually-hidden" value="<%= utilisateurs.rows[index].id %>" name="idUser" required>
+                    </label>
+                    <button class="button-admin-delete" onclick="if(confirm('Êtes-vous sûr de vouloir supprimer ce compte ? Cette action est irréversible.')) 
+                    { document.getElementById('deleteAccountForm').submit(); }">Supprimer le compte</button>
+                </form>
+                </div>
+            </article>
+            <% } %>
+            <div class="bouton-pagination">
+                <% if (hasPreviousPageUtilisateurs) { %>
+                    <a class="a-no-underline" href="/admin?pageUtilisateurs=<%= previousPageUtilisateurs %>">Précédent</a>
+                <% } %>
+                <% if (hasNextPageUtilisateurs) { %>
+                    <a class="a-no-underline" href="/admin?pageUtilisateurs=<%= nextPageUtilisateurs %>">Suivant</a>
+                <% } %>
+            </div>
+    </div>
+    <!-- <hr class="border-light m-0"> -->
+
+</div>

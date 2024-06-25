@@ -1,0 +1,74 @@
+<% if (typeof isLogged !=='undefined' && typeof isAdmin !=='undefined' ) { %>
+    <%- include('partials/header', { isLogged, isAdmin }) %>
+        <% } else if (typeof isLogged !=='undefined' ) { %>
+            <%- include('partials/header', { isLogged }) %>
+                <%} else { %>
+                    <%- include('partials/header') %>
+                        <% } %>
+
+                    <main>
+                        <section class="container light-style flex-grow-1 container-p-y">
+                            <form class="form-user-general" action="/profil" method="POST">
+                                <h1 class="font-weight-bold py-3 mb-4 special-text">
+                                    Votre compte :
+                                </h1>
+                                <div class="card overflow-hidden">
+                                    <div class="row no-gutters row-bordered row-border-light">
+                                        <nav class="col-md-3 pt-0">
+                                            <div class="list-group list-group-flush account-settings-links">
+                                                <a class="list-group-item list-group-item-action active"
+                                                    data-toggle="list" href="#account-general">Général</a>
+                                                <a class="list-group-item list-group-item-action" data-toggle="list"
+                                                    href="#account-change-password">Changer le mot de passe</a>
+                                                <a class="list-group-item list-group-item-action" data-toggle="list"
+                                                    href="#account-info">Mes réservations</a>
+                                            </div>
+                                        </nav>
+                                        <div class="col-md-9">
+                                            <div class="tab-content">
+                                                <% if (typeof alert !=='undefined' && typeof user !=='undefined' ) { %>
+                                                <%- include('partials-user/general', { user, alert }) %>
+                                                <% } else if (typeof user !=='undefined' ) { %>
+                                                <%- include('partials-user/general', { user }) %>
+                                                <% } else { %>
+                                                <%- include('partials-user/general', { user: {} }) %>
+                                                <% } %>
+
+                                                <% if (typeof alert !=='undefined' && typeof user !=='undefined' ) { %>
+                                                    <%- include('partials-user/password', { alert }) %>
+                                                    <% } else { %>
+                                                        <%- include('partials-user/password') %>
+                                                <% } %>
+
+                                                <% if (typeof alert !=='undefined' && typeof user !=='undefined' ) { %>
+                                                    <%- include('partials-user/reservations', { alert, commandeUser }) %>
+                                                    <% } else if (typeof alert !=='undefined' && typeof user !=='undefined') { %>
+                                                        <%- include('partials-user/reservations') %>
+                                                <% } else { %>
+                                                    <%- include('partials-user/reservations') %>
+                                            <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button-form-user text-right mt-3">
+                                    <button id="AccountFormModif" type="button" class="button-user button-animate-green" onclick="confirmModif()">Enregistrer les
+                                        changements</button>
+                                </form>
+                                <form method="POST" class="delete" action="/profil/supprimer">
+                                    <input type="hidden">
+                                    <button 
+                                    type="button" 
+                                    class="button-user button-animate-blood delete-user"
+                                    onclick="confirmDelete()">Supprimer le compte</button>
+                                </form>
+                                </div>
+                        </section>
+                    </main>
+
+                    <script data-cfasync="false"
+                        src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+                    <script type="text/javascript"></script>
+                </body>

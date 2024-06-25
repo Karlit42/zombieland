@@ -1,0 +1,90 @@
+<% if (typeof isLogged !=='undefined' && typeof isAdmin !=='undefined' ) { %>
+    <%- include('partials/header', { isLogged, isAdmin }) %>
+        <% } else if (typeof isLogged !=='undefined' ) { %>
+            <%- include('partials/header', { isLogged }) %>
+                <%} else { %>
+                    <%- include('partials/header') %>
+                        <% } %>
+
+<main class="main-cgu">
+    <h1>Les Conditions Générales</h1>
+    <section id="pdc" class="cgu pdc">
+        <h2>Politique de Confidentialité</h2>
+        <p>Le site web https://zombie-land.site est détenu par ZombieLand, qui est un contrôleur de données de vos données personnelles.</p>
+        <p>Nous avons adopté cette politique de confidentialité, qui détermine la manière dont nous traitons les informations collectées par https://zombie-land.site, qui fournit également les raisons pour lesquelles nous devons collecter certaines données personnelles vous concernant. Par conséquent, vous devez lire cette politique de confidentialité avant d'utiliser le site web de https://zombie-land.site.</p>
+        <p>Nous prenons soin de vos données personnelles et nous nous engageons à en garantir la confidentialité et la sécurité.</p>
+        <h3>Les informations personnelles que nous collectons :</h3>
+        <p>Lorsque vous visitez le https://zombie-land.site, nous recueillons automatiquement certaines informations sur votre appareil, notamment des informations sur votre navigateur web, votre adresse IP, votre fuseau horaire et certains des cookies installés sur votre appareil. En outre, lorsque vous naviguez sur le site, nous recueillons des informations sur les pages web ou les produits individuels que vous consultez, sur les sites web ou les termes de recherche qui vous ont renvoyé au site et sur la manière dont vous interagissez avec le site. Nous désignons ces informations collectées automatiquement par le terme "informations sur les appareils". En outre, nous pourrions collecter les données personnelles que vous nous fournissez (y compris, mais sans s'y limiter, le nom, le prénom, l'adresse, les informations de paiement, etc.) lors de l'inscription afin de pouvoir exécuter le contrat.</p>
+        <h3>Pourquoi traitons-nous vos données ?</h3>
+        <p>Notre priorité absolue est la sécurité des données des clients et, à ce titre, nous ne pouvons traiter que des données minimales sur les utilisateurs, uniquement dans la mesure où cela est absolument nécessaire pour maintenir le site web. Les informations collectées automatiquement sont utilisées uniquement pour identifier les cas potentiels d'abus et établir des informations statistiques concernant l'utilisation du site web. Ces informations statistiques ne sont pas autrement agrégées de manière à identifier un utilisateur particulier du système.</p>
+        <p>Vous pouvez visiter le site web sans nous dire qui vous êtes ni révéler d'informations, par lesquelles quelqu'un pourrait vous identifier comme un individu spécifique et identifiable. Toutefois, si vous souhaitez utiliser certaines fonctionnalités du site web, ou si vous souhaitez recevoir notre lettre d'information ou fournir d'autres détails en remplissant un formulaire, vous pouvez nous fournir des données personnelles, telles que votre e-mail, votre prénom, votre nom, votre ville de résidence, votre organisation, votre numéro de téléphone. Vous pouvez choisir de ne pas nous fournir vos données personnelles, mais il se peut alors que vous ne puissiez pas profiter de certaines fonctionnalités du site web. Par exemple, vous ne pourrez pas recevoir notre bulletin d'information ou nous contacter directement à partir du site web. Les utilisateurs qui ne savent pas quelles informations sont obligatoires sont invités à nous contacter via zombie-land@contact.com.</p>
+        <h3>Vos droits :</h3>
+        <p>Si vous êtes un résident européen, vous disposez des droits suivants liés à vos données personnelles :</p>
+        <ul>
+            <li>Le droit d'être informé.</li>
+            <li>Le droit d'accès.</li>
+            <li>Le droit de rectification.</li>
+            <li>Le droit à l'effacement.</li>
+            <li>Le droit de restreindre le traitement.</li>
+            <li>Le droit à la portabilité des données.</li>
+            <li>Le droit d'opposition.</li>
+            <li>Les droits relatifs à la prise de décision automatisée et au profilage.</li>
+        </ul>
+        <p>Si vous souhaitez exercer ce droit, veuillez nous contacter via les coordonnées ci-dessous.</p>
+        <p>En outre, si vous êtes un résident européen, nous notons que nous traitons vos informations afin d'exécuter les contrats que nous pourrions avoir avec vous (par exemple, si vous passez une commande par le biais du site), ou autrement pour poursuivre nos intérêts commerciaux légitimes énumérés ci-dessus. En outre, veuillez noter que vos informations pourraient être transférées en dehors de l'Europe, y compris au Canada et aux États-Unis.</p>
+        <h3>Liens vers d'autres sites web :</h3>
+        <p>Notre site web peut contenir des liens vers d'autres sites web qui ne sont pas détenus ou contrôlés par nous. Sachez que nous ne sommes pas responsables de ces autres sites web ou des pratiques de confidentialité des tiers. Nous vous encourageons à être attentif lorsque vous quittez notre site web et à lire les déclarations de confidentialité de chaque site web susceptible de collecter des informations personnelles.</p>
+        <h3>Sécurité de l'information :</h3>
+        <p>Nous sécurisons les informations que vous fournissez sur des serveurs informatiques dans un environnement contrôlé et sécurisé, protégé contre tout accès, utilisation ou divulgation non autorisés. Nous conservons des garanties administratives, techniques et physiques raisonnables pour nous protéger contre tout accès, utilisation, modification et divulgation non autorisés des données personnelles sous son contrôle et sa garde. Toutefois, aucune transmission de données sur Internet ou sur un réseau sans fil ne peut être garantie.</p>
+        <h3>Divulgation légale :</h3>
+        <p>Nous divulguerons toute information que nous collectons, utilisons ou recevons si la loi l'exige ou l'autorise, par exemple pour nous conformer à une citation à comparaître ou à une procédure judiciaire similaire, et lorsque nous pensons de bonne foi que la divulgation est nécessaire pour protéger nos droits, votre sécurité ou celle d'autrui, enquêter sur une fraude ou répondre à une demande du gouvernement.</p>
+        <h3>Informations de contact :</h3>
+        <p>Si vous souhaitez nous contacter pour comprendre davantage la présente politique ou si vous souhaitez nous contacter concernant toute question relative aux droits individuels et à vos informations personnelles, vous pouvez envoyer un courriel à zombie-land@contact.com.</p>
+    </section>
+
+    <section id="cu" class="cgu cu">
+        <h2>Conditions d'Utilisation de ZombieLand Adventure Park</h2>
+        <h3>1. Introduction</h3>
+        <p>Bienvenue sur le site web de ZombieLand Adventure Park, situé à La Tombe-sur-Seine-et-Marne. Ces Conditions d'Utilisation régissent votre accès et utilisation de notre site web et services associés. En utilisant notre site, vous acceptez ces conditions dans leur intégralité.</p>
+        <h3>2. Acceptation des Conditions</h3>
+        <p>En accédant ou en utilisant le site web de ZombieLand, vous acceptez d'être lié par ces Conditions d'Utilisation et toutes les lois et réglementations applicables.</p>
+        <h3>3. Modifications des Conditions</h3>
+        <p>ZombieLand se réserve le droit de modifier ou de mettre à jour ces Conditions d'Utilisation à tout moment sans préavis. Votre utilisation continue du site après de telles modifications constitue votre acceptation des nouvelles conditions.</p>
+        <h3>4. Accès et Utilisation du Service</h3>
+        <p>Le site web de ZombieLand fournit des informations sur nos attractions, permet la réservation de billets et d'hôtels, et offre des fonctionnalités interactives pour améliorer votre expérience. Vous acceptez de ne pas utiliser le site à des fins illégales ou interdites par ces conditions.</p>
+        <h3>5. Droits de Propriété Intellectuelle</h3>
+        <p>Tout le contenu publié sur le site, y compris les textes, graphiques, logos, images, compilations de données et logiciels, est la propriété de ZombieLand ou de ses fournisseurs de contenu et est protégé par les lois sur la propriété intellectuelle.</p>
+        <h3>6. Contenu Généré par l'Utilisateur</h3>
+        <p>Vous pouvez être autorisé à poster ou transmettre du contenu. Vous acceptez de ne pas poster de contenu illégal, diffamatoire, obscène ou autrement répréhensible. ZombieLand se réserve le droit de supprimer tout contenu jugé inapproprié.</p>
+        <h3>7. Comptes Utilisateurs</h3>
+        <p>Si vous créez un compte sur notre site, vous êtes responsable de maintenir la confidentialité de votre compte et mot de passe et de restreindre l'accès à votre ordinateur.</p>
+        <h3>8. Limitation de Responsabilité</h3>
+        <p>ZombieLand ne sera pas responsable des dommages indirects découlant de votre utilisation ou incapacité à utiliser le site.</p>
+        <h3>9. Indemnisation</h3>
+        <p>Vous acceptez d'indemniser ZombieLand et ses affiliés, dirigeants, agents et employés contre toute réclamation ou demande, y compris les frais d'avocat, faite par un tiers en raison de votre utilisation du site.</p>
+        <h3>10. Juridiction et Loi Applicable</h3>
+        <p>Ces Conditions d'Utilisation seront régies et interprétées conformément aux lois de France, sans donner effet à aucun principe de conflits de lois.</p>
+        <h3>11. Contact</h3>
+        <p>Pour toute question ou préoccupation concernant ces Conditions d'Utilisation, veuillez nous contacter via zombie-land@contact.com.</p>
+    </section>
+
+    <section id="cdr" class="cgu pdr">
+        <h2>Politique de Remboursement de ZombieLand Adventure Park</h2>
+        <h3>Introduction</h3>
+        <p>ZombieLand Adventure Park apprécie la satisfaction de ses visiteurs et s'engage à offrir une expérience exceptionnelle. Cette politique de remboursement explique les conditions sous lesquelles les remboursements peuvent être demandés et traités.</p>
+        <ul>
+            <li><span class="bold">Billets d'Entrée et Réservations d'Hôtels :</span> Tous les achats de billets d'entrée et les réservations d'hôtels sont généralement non remboursables. Cependant, dans certaines circonstances exceptionnelles, ZombieLand peut offrir un remboursement ou un crédit pour une utilisation future.</li>
+            <li><span class="bold">Annulation par le Visiteur :</span> Les visiteurs peuvent demander un remboursement ou un changement de date pour leur réservation jusqu'à 10 jours avant la date prévue de la visite. Une telle demande doit être faite par écrit à l'adresse e-mail fournie par ZombieLand.</li>
+            <li><span class="bold">Annulation par ZombieLand :</span> Si une attraction est annulée ou fermée en raison de circonstances indépendantes de notre volonté (telles que des conditions météorologiques extrêmes, des urgences de sécurité, ou des directives gouvernementales), ZombieLand offrira la possibilité de reprogrammer la visite ou fournira un remboursement complet.</li>
+            <li><span class="bold">Maladie ou Circonstances Exceptionnelles :</span> En cas de maladie ou de circonstances exceptionnelles empêchant la visite (sur présentation de justificatifs appropriés), ZombieLand examinera les demandes de remboursement au cas par cas.</li>
+            <li><span class="bold">Délai de Traitement :</span> Les demandes de remboursement seront traitées dans un délai de 30 jours à compter de leur réception. Les remboursements seront effectués en utilisant le même mode de paiement utilisé lors de l'achat.</li>
+            <li><span class="bold">Modifications de Réservation :</span> Les modifications de réservation sont soumises à la disponibilité et peuvent entraîner des frais supplémentaires.</li>
+        </ul>
+        <h3>Procédure de Demande de Remboursement</h3>
+        <p>Pour demander un remboursement, les visiteurs doivent contacter le service clientèle de ZombieLand en fournissant les détails de leur achat, y compris le numéro de confirmation, la date d'achat, et la raison de la demande de remboursement.</p>
+        <h3>Contact</h3>
+        <p>Pour toute question ou demande concernant cette politique de remboursement, veuillez nous contacter via zombie-land@contact.com.</p>
+    </section>
+</main>
+
+<%- include('partials/footer') %>

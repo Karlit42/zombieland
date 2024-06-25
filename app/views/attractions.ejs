@@ -1,0 +1,50 @@
+<% if (typeof isLogged !=='undefined' && typeof isAdmin !=='undefined' ) { %>
+    <%- include('partials/header', { isLogged, isAdmin }) %>
+        <% } else if (typeof isLogged !=='undefined' ) { %>
+            <%- include('partials/header', { isLogged }) %>
+                <%} else { %>
+                    <%- include('partials/header') %>
+                        <% } %>
+                        
+                    <main>
+                        <div class="banner-attractions"></div>
+                        <!-- <img class="banner_attractions" src="../img/zombie-parade-3.png" alt=""> -->
+                        <div class="margin-RL container_attractions">
+                            <section>
+                                <h1 class="h1-attractions special-text">Les attractions de <span class="h1-homepage">ZombieLand</span></h1>
+                                <form method="post" class="categorie_form" >
+                                    <select name="categories" id="categorie-select">
+                                        <option value="" disabled selected>Choisissez une catégorie</option>
+                                        <option value="0">Toutes les catégories</option>
+                                        <% for(let index=0; index < categorieResult.rows.length; index++) { %>
+                                            <option value="<%= categorieResult.rows[index].id %>">
+                                                <%= categorieResult.rows[index].nom %>
+                                            </option>
+                                            <% } %>
+                                    </select>
+                                    <button type="submit" class="button-animate-blood">Valider la recherche</button>
+                                    <!-- <input name="searchAttraction" type="text" placeholder="Rechercher..."> -->
+                                    
+                                </form>
+                            </section>
+                            <section class="attractions">
+                                <% for(let index=0; index < result.rows.length; index++) { %>
+                                    <article class="attractions-card">
+                                        <h2 class="special-text">
+                                            <%= result.rows[index].nom %>
+                                        </h2>
+                                        <div class="container-img-attractions">
+                                            <img src="<%= result.rows[index].photo_url_3 %> "
+                                                alt="image de l'attraction <%= result.rows[index].nom %>">
+                                        </div>
+                                        <p class="text-balance">
+                                            <%= result.rows[index].description.substring(0, 110) + '...' %>
+                                        </p>
+                                        <a class="button-animate-blood a-no-underline"
+                                            href="/attractions/<%= result.rows[index].slug %>">En savoir plus</a>
+                                    </article>
+                                    <% } %>
+                            </section>
+                        </div>
+                    </main>
+                    <%- include('partials/footer') %>
